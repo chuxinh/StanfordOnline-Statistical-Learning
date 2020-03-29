@@ -70,3 +70,24 @@
 We can vary the threadshold to classify a class, which can be captured in a ROC curve, in which we like the false positive rate to be low, and true positive rate to be high (i.e. true positive rate as close to 1 and false positive rate as close to 0)
 
 [ROC Curve](ROC_curve.png)
+
+### Quadratic Discriminant Analysis and Naive Bayes
+$$
+    Pr(Y=k|X=x) = \frac{\pi_kf_k(x)}{\sum_{l=1}^{K}\pi_lf_l(x)}
+$$
+When $f_k(x)$ are Gaussian densities, with the same covariance, matrix $\Sigma$ in each class, this leads to linear discriminant analysis. By altering the forms for $f_k(x)$, we get different classifiers
+
+- With Gaussians but different $\Sigma_k$ in each class, we get *quadratic discriminant analysis*
+- With $f_k(x) = \prod_{j=1}^{p} f_{jk}(x_j)$ (conditional independence model) in each class, we get *naive Bayes*. For Gaussian this means the $\Sigma_k$ are diagnoal
+
+#### Naive Bayes
+- Assumes features are independent in each class
+- Useful when $p$ is large, and so multivariate methods like QDA and event LDA breakdown
+  - Gaussian naive3 Bayes assumes each $\Sigma_k$ is diagnoal
+  - Can use for mixed feature vectors (qualitative and quantitative). If $X_j$ is qualitative, replace the density with PMF over discrete categories
+
+### Logistic Regression vs LDA
+- Logistic regression uses the conditional likelyhood based on $Pr(Y|X$ (known as *discriminative learning*)
+- LDA uses the full likelihood based on $Pr(X, Y)$ (known as *generative learning*)
+- In practice, the results are very similar
+- Logistic regression can also fit quadratic boundaries like QDA, by explicityly including quadratic terms in the model
