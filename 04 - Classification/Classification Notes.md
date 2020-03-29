@@ -57,4 +57,16 @@
   $$
   \delta_k(x) = x^T\Sigma^{-1}\mu_k - \frac{1}{2}\mu_k^T\Sigma^{-1}\mu_k + log\pi_k
   $$
-  
+- Once we have estimates of $\hat{\delta}(x)$, we can turn these into estimates for class probabilities:
+  $$
+    \hat{Pr}(Y=k|X=x) = \frac{e^{\hat\delta_k(x)}}{\sum_{l=1}^K}e^{\hat\delta_l(x)}
+  $$ 
+  So classifying to the largest $\hat\delta_k(x)$ amonts to classifying to the class for which $\hat{Pr}(Y=k|X=x)$ is the largest
+
+#### Types of errors
+- False positive rate: the fraction of negative examples that are classified as positive
+- False negative rate: the fraction of positive examples that are classified as negative
+
+We can vary the threadshold to classify a class, which can be captured in a ROC curve, in which we like the false positive rate to be low, and true positive rate to be high (i.e. true positive rate as close to 1 and false positive rate as close to 0)
+
+[ROC Curve](ROC_curve.png)
